@@ -15,7 +15,6 @@ const updateUserService = (id, name, username, email, password, avatar) =>
     },
     {
       name,
-      username,
       email,
       password,
       avatar,
