@@ -39,7 +39,6 @@
                 "Users": {
                   "value": {
                     "name": "Cacau Lima",
-                    "username": "cacode",
                     "email": "clima@gmail.com",
                     "password": "12345",
                     "avatar": "https://i.imgur.com/Ry1cb5M.png",
@@ -590,9 +589,6 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
-          },
-          "username": {
             "type": "string"
           },
           "email": {

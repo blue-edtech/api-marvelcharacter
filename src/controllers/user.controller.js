@@ -3,7 +3,7 @@ const authService = require("../services/auth.service");
 const bcrypt = require("bcryptjs");
 
 const createUserController = async (req, res) => {
-  const { name, username, email, password, avatar } = req.body;
+  const { name, email, password, avatar } = req.body;
 
   if (!name || !email || !password || !avatar) {
     return res.status(400).send({
