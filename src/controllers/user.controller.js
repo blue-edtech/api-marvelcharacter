@@ -7,7 +7,7 @@ const createUserController = async (req, res) => {
 
   if (!name || !email || !password || !avatar) {
     return res.status(400).send({
-      message: "Submit all fields for registration",
+      message: "Envie todos os campos para o cadastro",
     });
   }
 
@@ -15,7 +15,7 @@ const createUserController = async (req, res) => {
 
   if (foundUser) {
     return res.status(400).send({
-      message: "User already exists",
+      message: "Usuário já existe!",
     });
   }
 
@@ -25,7 +25,7 @@ const createUserController = async (req, res) => {
 
   if (!user) {
     return res.status(400).send({
-      message: "Error creating User",
+      message: "Erro ao criar o usuário, tente mais tarde.",
     });
   }
 
@@ -47,7 +47,7 @@ const findAllUserController = async (req, res) => {
 
   if (users.length === 0) {
     return res.status(400).send({
-      message: "There are no registered users",
+      message: "Não há usuários cadastrados",
     });
   }
 
@@ -64,7 +64,7 @@ const findUserByIdController = async (req, res) => {
   }
   if (!idParam) {
     return res.status(400).send({
-      message: "Send an id in the parameters to search for the user",
+      message: "Envie um id nos parâmetros para procurar o usuário",
     });
   }
 
@@ -80,7 +80,7 @@ const updateUserController = async (req, res) => {
 
     if (!name && !email && !password && !avatar) {
       res.status(400).send({
-        message: "Submit at least one field to update the user",
+        message: "Envie pelo menos um campo para atualizar o usuário",
       });
     }
 
@@ -88,7 +88,7 @@ const updateUserController = async (req, res) => {
 
     if (user._id != req.userId) {
       return res.status(400).send({
-        message: "You cannot update this user",
+        message: "Você não pode atualizar este usuário",
       });
     }
 
@@ -104,7 +104,7 @@ const updateUserController = async (req, res) => {
       avatar,
     );
 
-    return res.send({ message: "User successfully updated!" });
+    return res.send({ message: "Usuário atualizado com sucesso!" });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }

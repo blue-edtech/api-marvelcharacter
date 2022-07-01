@@ -10,16 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api-breakingnews.onrender.com",
-      "description": "Render"
-    },
-
-    {
-      "url": "http://localhost:3000",
-      "description": "Local"
-    },
-    {
-      "url": "https://breakingnews.herokuapp.com",
+      "url": "https://api-marvelcharacter.herokuapp.com",
       "description": "Heroku"
     }
   ],
@@ -41,8 +32,7 @@
                     "name": "Cacau Lima",
                     "email": "clima@gmail.com",
                     "password": "12345",
-                    "avatar": "https://i.imgur.com/Ry1cb5M.png",
-                    "background": "https://images.wallpapersden.com/image/download/triangle-8k-blue-pattern_bGZlbmiUmZqaraWkpJRmbmdlrWZlbWU.jpg"
+                    "avatar": "https://i.imgur.com/Ry1cb5M.png"
                   }
                 }
               }
@@ -216,27 +206,26 @@
         }
       }
     },
-    "/posts/create": {
-      "post": {
-        "summary": "Create a new post",
-        "description": "Route responsible for creating a new Post",
-        "tags": ["Post"],
+    "/character/create": {
+      "character": {
+        "summary": "Create a new character",
+        "description": "Route responsible for creating a new character",
+        "tags": ["Character"],
         "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Post"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
-                "Post": {
+                "Character": {
                   "value": {
                     "user": "",
-                    "banner": "https://labs.tadigital.com/wp-content/uploads/2017/07/ES6-banner.jpg",
-                    "title": "ECMAScript 6",
-                    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                    "likes": [],
-                    "comments": []
+                    "name": "Peter Parker",
+                    "image": "https://static.wikia.nocookie.net/marveldatabase/images/d/da/Amazing_Spider-Man_Vol_5_15_Textless.jpg",
+                    "reality": "Terra-616",
+                    "identity": "Homem-Aranha"
                   }
                 }
               }
@@ -256,7 +245,7 @@
               "application/json": {
                 "schemma": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -264,11 +253,11 @@
         }
       }
     },
-    "/posts": {
+    "/character": {
       "get": {
-        "summary": "Search all posts",
-        "description": "Route responsible for fetching all posts",
-        "tags": ["Post"],
+        "summary": "Search all Characters",
+        "description": "Route responsible for fetching all Characters",
+        "tags": ["Character"],
         "parameters": [
           {
             "in": "query",
@@ -292,7 +281,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }
@@ -301,34 +290,11 @@
         }
       }
     },
-    "/posts/top": {
+    "/character/search": {
       "get": {
-        "summary": "Search top post",
-        "description": "Route responsible for fetching top post",
-        "tags": ["Post"],
-        "responses": {
-          "400": {
-            "description": "Not Found"
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schemma": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/Post"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/posts/search": {
-      "get": {
-        "summary": "Search posts by title",
-        "description": "Route responsible for fetching the posts that match the title sent via query params",
-        "tags": ["Post"],
+        "summary": "Search Character by name",
+        "description": "Route responsible for fetching the Character that match the name sent via query params",
+        "tags": ["Character"],
         "parameters": [
           {
             "in": "query",
@@ -348,7 +314,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }
@@ -357,11 +323,11 @@
         }
       }
     },
-    "/posts/byIdPost/{id}": {
+    "/character/byIdPost/{id}": {
       "patch": {
-        "summary": "Search post by id",
-        "description": "Route responsible for fetching post by id",
-        "tags": ["Post"],
+        "summary": "Search Character by id",
+        "description": "Route responsible for fetching Character by id",
+        "tags": ["Character"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
@@ -385,7 +351,7 @@
               "application/json": {
                 "schemma": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -393,11 +359,11 @@
         }
       }
     },
-    "/posts/byUserId": {
+    "/character/byUserId": {
       "get": {
-        "summary": "Search posts by use id",
-        "description": "Route responsible for fetching posts by use id",
-        "tags": ["Post"],
+        "summary": "Search Character by use id",
+        "description": "Route responsible for fetching Character by use id",
+        "tags": ["Character"],
         "responses": {
           "400": {
             "description": "Not Found"
@@ -412,7 +378,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }
@@ -421,11 +387,11 @@
         }
       }
     },
-    "/posts/upadate/{id}": {
+    "/character/upadate/{id}": {
       "patch": {
-        "summary": "Update a post",
-        "description": "Route responsible for updating a Post",
-        "tags": ["Post"],
+        "summary": "Update a Character",
+        "description": "Route responsible for updating a Character",
+        "tags": ["Character"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
@@ -440,7 +406,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Post"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
                 "Post": {
@@ -467,7 +433,7 @@
               "application/json": {
                 "schemma": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -475,11 +441,11 @@
         }
       }
     },
-    "/posts/delete/{id}": {
+    "/character/delete/{id}": {
       "delete": {
-        "summary": "Delete a post",
-        "description": "Route responsible for deleting a Post",
-        "tags": ["Post"],
+        "summary": "Delete a Character",
+        "description": "Route responsible for deleting a Character",
+        "tags": ["Character"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
@@ -490,78 +456,6 @@
             "required": true
           }
         ],
-        "responses": {
-          "401": {
-            "description": "Unauthorized"
-          },
-          "400": {
-            "description": "Not Found"
-          },
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/posts/{id}/like": {
-      "patch": {
-        "summary": "Like a post",
-        "description": "Route responsible for liking a post",
-        "tags": ["Post"],
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "type": "string",
-            "description": "User ID",
-            "required": true
-          }
-        ],
-        "responses": {
-          "401": {
-            "description": "Unauthorized"
-          },
-          "400": {
-            "description": "Not Found"
-          },
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/posts/{id}/comment": {
-      "patch": {
-        "summary": "Comment on a post",
-        "description": "Route responsible for commenting on a post",
-        "tags": ["Post"],
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "type": "string",
-            "description": "User ID",
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Comment"
-              },
-              "examples": {
-                "Comment": {
-                  "value": {
-                    "message": "Comentário legal"
-                  }
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -599,43 +493,29 @@
           },
           "avatar": {
             "type": "string"
-          },
-          "background": {
-            "type": "string"
           }
         }
       },
-      "Post": {
+      "Character": {
         "type": "object",
         "properties": {
           "user": {
             "type": "string"
           },
-          "banner": {
+          "name": {
             "type": "string"
           },
-          "title": {
+          "image": {
             "type": "string"
           },
-          "text": {
+          "reality": {
             "type": "string"
           },
-          "likes": {
-            "type": "number"
-          },
-          "comments": {
-            "type": "array"
+          "identity": {
+            "type": "string"
           },
           "createdAt": {
             "type": "date"
-          }
-        }
-      },
-      "Comment": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
           }
         }
       }

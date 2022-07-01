@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
-app.use("/character", characterRoute);/* 
-app.use("/doc", swaggerRoute); */
+app.use("/character", characterRoute);
+app.use("/doc", swaggerRoute);
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));

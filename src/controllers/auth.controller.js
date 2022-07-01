@@ -8,13 +8,13 @@ const loginController = async (req, res) => {
     const user = await authService.loginService(email);
 
     if(!user) {
-        return res.status(400).send({message: "User not found"})
+        return res.status(400).send({message: "Usuário não encontrado"})
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if(!isPasswordValid) {
-        return res.status(400).send({message: "Invalid password"})
+        return res.status(400).send({message: "Senha inválida"})
     }
 
     const token = authService.generateToken(user.id);
