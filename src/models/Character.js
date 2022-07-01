@@ -6,7 +6,7 @@ const CharacterSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  v: {
+  name: {
     type: String,
     required: true,
   },

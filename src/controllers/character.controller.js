@@ -10,7 +10,7 @@ const createCharacterController = async (req, res) => {
       });
     }
 
-    const { id } = await characterService.createCharacterService(
+    const newCharacter = await characterService.createCharacterService(
       name,
       image,
       reality,
@@ -20,7 +20,7 @@ const createCharacterController = async (req, res) => {
 
     return res.send({
       message: "Post created successfully!",
-      character: { name, image, reality, identity },
+      character: newCharacter,
     });
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -64,6 +64,8 @@ const findAllCharacterController = async (req, res) => {
     if (characters.length === 0) {
       return res.status(400).send({ message: "There are no posts" });
     }
+
+    console.log(characters.name);
 
     return res.send({
       nextUrl,
