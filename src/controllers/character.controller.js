@@ -78,7 +78,7 @@ const findAllCharacterController = async (req, res) => {
         image: character.image,
         reality: character.reality,
         identity: character.identity,
-        name: character.user.name,
+        userName: character.user.name,
         avatar: character.user.avatar,
       })),
     });
@@ -105,7 +105,7 @@ const searchCharacterController = async (req, res) => {
       image: character.image,
       reality: character.reality,
       identity: character.identity,
-      name: character.user.name,
+      userName: character.user.name,
       avatar: character.user.avatar,
     })),
   });
@@ -123,7 +123,7 @@ const findCharacterByIdController = async (req, res) => {
       image: character.image,
       reality: character.reality,
       identity: character.identity,
-      name: character.user.name,
+      userName: character.user.name,
       avatar: character.user.avatar,
     });
   } catch (err) {
@@ -144,7 +144,7 @@ const findCharacterByUserIdController = async (req, res) => {
         image: character.image,
         reality: character.reality,
         identity: character.identity,
-        name: character.user.name,
+        userName: character.user.name,
         avatar: character.user.avatar,
       })),
     });
