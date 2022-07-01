@@ -35,7 +35,7 @@ const findAllCharacterController = async (req, res) => {
     offset = Number(offset);
 
     if (!limit) {
-      limit = 5;
+      limit = 8;
     }
 
     if (!offset) {
@@ -65,8 +65,6 @@ const findAllCharacterController = async (req, res) => {
       return res.status(400).send({ message: "There are no posts" });
     }
 
-    console.log(characters.name);
-
     return res.send({
       nextUrl,
       previousUrl,
@@ -82,6 +80,7 @@ const findAllCharacterController = async (req, res) => {
         identity: character.identity,
         userName: character.user.name,
         avatar: character.user.avatar,
+        userId: character.user.id,
       })),
     });
   } catch (err) {
@@ -109,6 +108,7 @@ const searchCharacterController = async (req, res) => {
       identity: character.identity,
       userName: character.user.name,
       avatar: character.user.avatar,
+      userId: character.user.id,
     })),
   });
 };
@@ -127,6 +127,7 @@ const findCharacterByIdController = async (req, res) => {
       identity: character.identity,
       userName: character.user.name,
       avatar: character.user.avatar,
+      userId: character.user.id,
     });
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -148,6 +149,7 @@ const findCharacterByUserIdController = async (req, res) => {
         identity: character.identity,
         userName: character.user.name,
         avatar: character.user.avatar,
+        userId: character.user.id,
       })),
     });
   } catch (err) {
@@ -166,7 +168,7 @@ const updateCharacterController = async (req, res) => {
       });
     }
 
-    const character = await postService.findPostByIdService(id);
+    const character = await characterService.findCharacterByIdService(id);
 
     if (character.user._id != req.userId) {
       return res.status(400).send({
